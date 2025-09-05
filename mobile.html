@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHeal - Phone Repair Experts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #5271FF;
+            --primary-light: #6B8AFF;
+            --primary-dark: #3A5BEB;
+            --accent: #FF6B8B;
+            --accent-light: #FF85A1;
+            --dark: #2D2F45;
+            --light: #F7F9FF;
+            --blue: #4ECDC4;
+            --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            --radius: 14px;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #F7F9FF, #E6EEFF);
+            color: var(--dark);
+            line-height: 1.6;
+            font-family: 'Nunito', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Quicksand', sans-serif;
+            color: var(--dark);
+            font-weight: 700;
+        }
+        
+        .page {
+            min-height: 100vh;
+            width: 100%;
+            padding: 0px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        .page-content {
+            max-width: 500px;
+            width: 100%;
+            background: var(--light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            animation: fadeIn 0.8s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 8px 20px rgba(82, 113, 255, 0.3);
+            margin-bottom: 15px;
+            transform: rotate(10deg);
+        }
+        
+        .logo-text {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        
+        .logo-subtext {
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        
+        h2 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .nav-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 22px;
+            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-radius: 50px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 22px;
+        }
+
+        nav a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 1.4rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        nav a.active {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 5px 15px rgba(82, 113, 255, 0.4);
+            transform: translateY(-8px);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 10px 0 20px;
+        }
+        
+        .shop-image {
+            width: 100%;
+            height: 180px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+        
+        .shop-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><rect x="25" y="20" width="50" height="60" rx="5" stroke="%23FF6B8B" stroke-width="2" fill="none" /><circle cx="50" cy="75" r="3" fill="%23FF6B8B" /><path d="M35 30 L65 30" stroke="%23FF6B8B" stroke-width="2" /></svg>');
+            background-size: 80px;
+            opacity: 0.1;
+        }
+        
+        .hero h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+            font-weight: 800;
+        }
+        
+        .tagline {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .specialty-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            padding: 8px 15px;
+            background: rgba(82, 113, 255, 0.1);
+            color: var(--primary-dark);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--accent);
+        }
+        
+        .cta-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        .btn {
+            padding: 14px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition);
+            text-align: center;
+            font-size: 0.95rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 5px 15px rgba(82, 113, 255, 0.3);
+        }
+        
+        .btn-secondary {
+            background: var(--light);
+            color: var(--primary-dark);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card {
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .service-item {
+            background: var(--light);
+            padding: 15px;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid #EAEDED;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-item:hover {
+            background: #F0F4FF;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 15px;
+            border-radius: 18px;
+            overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .service-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+        }
+
+        .service-item p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .price {
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 120px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: var(--radius);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+        
+        .contact-info {
+            margin-bottom: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #F0F4FF;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            background: #E6EEFF;
+        }
+        
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .feedback-rating i{
+            color: var(--accent);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #E6EEFF;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(82, 113, 255, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn, .review-btn {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            display: block;
+            margin: 0 auto;
+            transition: var(--transition);
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(82, 113, 255, 0.3);
+            font-family: 'Nunito', sans-serif;
+        }
+        
+        .submit-btn:hover, .review-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(82, 113, 255, 0.4);
+        }
+        
+        .review-btn a {
+            text-decoration: none;
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: #F0F4FF;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            border: 1px solid #E6EEFF;
+        }
+        
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .decorative-border {
+            height: 8px;
+            background: linear-gradient(to right, var(--primary), var(--accent), var(--primary));
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        
+        .pattern {
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" width="100" height="10"><circle cx="10" cy="5" r="2" fill="%235271FF" /><circle cx="30" cy="5" r="2" fill="%235271FF" /><circle cx="50" cy="5" r="2" fill="%235271FF" /><circle cx="70" cy="5" r="2" fill="%235271FF" /><circle cx="90" cy="5" r="2" fill="%235271FF" /></svg>');
+            background-repeat: repeat-x;
+            opacity: 0.7;
+            margin: 15px 0;
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .scroll-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(82, 113, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .scroll-dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
+        }
+        
+        .share-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .share-option {
+            padding: 20px 15px;
+            border-radius: var(--radius);
+            background: #F0F4FF;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .share-option:hover {
+            background: rgba(82, 113, 255, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .share-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .qr-scanner {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            background: #F0F4FF;
+            border: 1px solid #E6EEFF;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 15px;
+        }
+        
+        .copy-link {
+            display: flex;
+            margin: 20px 0;
+        }
+        
+        .copy-link input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #E6EEFF;
+            border-radius: var(--radius) 0 0 var(--radius);
+            border-right: none;
+            font-size: 0.9rem;
+        }
+        
+        .copy-link button {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .feedback-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .feedback-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .feedback-name {
+            font-weight: 700;
+        }
+        
+        .feedback-date {
+            font-size: 0.8rem;
+            color: #777;
+        }
+        
+        /* New styles for phone repair shop */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 15px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .device-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .device-item {
+            text-align: center;
+            padding: 15px;
+            border-radius: var(--radius);
+            background: #F0F4FF;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .device-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .device-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .offer-banner {
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            color: white;
+            padding: 15px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .offer-banner::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: shine 3s infinite linear;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-50%) translateY(-50%); }
+        }
+        
+        .offer-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            position: relative;
+        }
+        
+        .offer-desc {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .offer-code {
+            background: rgba(0,0,0,0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .warranty-card {
+            background: linear-gradient(to right, var(--blue), #3DBDB5);
+            color: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 10px 20px rgba(78, 205, 196, 0.3);
+        }
+        
+        .warranty-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .warranty-desc {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-warranty {
+            background: white;
+            color: var(--blue);
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+        
+        .btn-warranty:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .brands-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .brand-logo {
+            width: 60px;
+            height: 60px;
+            background: #F0F4FF;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        .service-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            max-width: 400px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .service-detail-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .service-detail-icon {
+            width: 80px;
+            height: 80px;
+            background: #E6EEFF;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin: 0 auto 15px;
+        }
+        
+        .service-features {
+            margin: 15px 0;
+        }
+        
+        .service-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .service-feature i {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+        
+        .service-time {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin: 15px 0;
+            color: #777;
+        }
+        
+        .service-warranty {
+            background: #F0F4FF;
+            padding: 10px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        
+        .service-action {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 500px) {
+            .page-content {
+                padding: 20px;
+            }
+            
+            .services-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-text {
+                font-size: 1.8rem;
+            }
+            
+            .scroll-indicator {
+                right: 10px;
+            }
+            
+            .nav-container {
+                padding: 10px 20px;
+                gap: 15px;
+            }
+            
+            .stats-container,
+            .device-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .device-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="scroll-indicator">
+        <a href="#main" class="scroll-dot active"></a>
+        <a href="#about" class="scroll-dot"></a>
+        <a href="#services" class="scroll-dot"></a>
+        <a href="#gallery" class="scroll-dot"></a>
+        <a href="#testimonials" class="scroll-dot"></a>
+        <a href="#contact" class="scroll-dot"></a>
+        <a href="#location" class="scroll-dot"></a>
+    </div>
+
+   
+    <section id="main" class="page">
+        <div class="page-content">
+            <div class="header">
+                <div class="logo-container">
+                    <div class="logo">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="logo-text">TechHeal</div>
+                    <div class="logo-subtext">Phone Repair Experts</div>
+                </div>
+            </div>
+            
+            <div class="hero">
+                <div class="shop-image">
+                    Fast & Reliable Phone Repairs
+                </div>
+                
+                <h1>Your Phone's Best Friend</h1>
+                <p class="tagline">We fix it right the first time</p>
+                
+                <div class="specialty-badges">
+                    <div class="badge">Screen Repair</div>
+                    <div class="badge">Battery Replacement</div>
+                    <div class="badge">Water Damage</div>
+                </div>
+                
+                <p>Expert technicians, quality parts, and quick service to get your device back in perfect condition.</p>
+                
+       
+                <div class="warranty-card">
+                    <div class="warranty-title">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>90-Day Warranty</span>
+                    </div>
+                    <div class="warranty-desc">
+                        All repairs come with a 90-day warranty for your peace of mind
+                    </div>
+                    <a href="#contact" class="btn-warranty">
+                        <i class="fas fa-info-circle"></i> Learn More
+                    </a>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="tel:+9100000000" class="btn btn-primary">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                    <a href="https://wa.me/0000000000" class="btn btn-whatsapp">
+                       <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="#services" class="btn btn-secondary">
+                        <i class="fas fa-tools"></i> Our Services
+                    </a>
+                    <a href="#location" class="btn btn-secondary">
+                        <i class="fas fa-map-marker-alt"></i> Directions
+                    </a>
+                </div>
+            </div>
+            
+            <div class="pattern"></div>
+            
+            <div class="social-links">
+                <a href="#" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="#" class="social-icon">
+                    <i class="fab fa-google"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="about" class="page">
+        <div class="page-content">
+            <h2>Our Story</h2>
+            
+            <div class="decorative-border"></div>
+            
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6,200+</div>
+                    <div class="stat-label">Devices Repaired</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30 mins</div>
+                    <div class="stat-label">Avg. Repair Time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Satisfaction</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Expert Technicians</h3>
+                <p>Since 2015, TechHeal has been providing top-quality device repair services with certified technicians who specialize in mobile devices.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Quality Parts</h3>
+                <p>We use only premium quality parts and the latest repair equipment to ensure your device receives the best care possible.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Our Promise</h3>
+                <p>We're committed to providing honest, transparent service with fair pricing and a satisfaction guarantee on all our work.</p>
+            </div>
+            
+         
+            <h3>Devices We Repair</h3>
+            <div class="device-container">
+                <div class="device-item">
+                    <div class="device-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <div class="device-name">iPhone</div>
+                </div>
+                <div class="device-item">
+                    <div class="device-icon">
+                        <i class="fab fa-android"></i>
+                    </div>
+                    <div class="device-name">Android</div>
+                </div>
+                <div class="device-item">
+                    <div class="device-icon">
+                        <i class="fas fa-tablet-alt"></i>
+                    </div>
+                    <div class="device-name">Tablets</div>
+                </div>
+                <div class="device-item">
+                    <div class="device-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="device-name">Laptops</div>
+                </div>
+                <div class="device-item">
+                    <div class="device-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="device-name">Consoles</div>
+                </div>
+                <div class="device-item">
+                    <div class="device-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <div class="device-name">Accessories</div>
+                </div>
+            </div>
+            
+            <div class="pattern"></div>
+            
+            <h3>Business Hours</h3>
+            <div class="card">
+                <p><strong>Monday - Friday:</strong> 9:00 AM - 7:00 PM</p>
+                <p><strong>Saturday:</strong> 10:00 AM - 5:00 PM</p>
+                <p><strong>Sunday:</strong> 11:00 AM - 3:00 PM</p>
+                <p><strong>Emergency Repairs:</strong> Available</p>
+            </div>
+        </div>
+    </section>
+
+ 
+    <section id="services" class="page">
+        <div class="page-content">
+            <h2>Our Services</h2>
+            <p>Comprehensive device repair services for all makes and models</p>
+            
+            <div class="decorative-border"></div>
+            
+    
+            <div class="offer-banner">
+                <div class="offer-title">SUMMER SPECIAL</div>
+                <div class="offer-desc">15% OFF on Screen Replacement this month</div>
+                <div class="offer-code">Code: SCREEN15</div>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-item" onclick="openServiceModal('Screen Replacement', 'fas fa-mobile-alt', 'Professional screen replacement using high-quality OEM or premium aftermarket parts. Includes calibration and testing.', '45-60 mins', '90 days', '₹3,999', '₹3,399')">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Screen Replacement</h3>
+                    <p>Broken display repair</p>
+                    <div class="price">₹3,999</div>
+                </div>
+                
+                <div class="service-item" onclick="openServiceModal('Battery Replacement', 'fas fa-battery-full', 'Complete battery replacement with high-capacity batteries. Includes diagnostics and performance testing.', '30-45 mins', '180 days', '₹2,499', '₹2,249')">
+                    <div class="service-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3>Battery Replacement</h3>
+                    <p>New battery installation</p>
+                    <div class="price">₹2,499</div>
+                </div>
+                
+                <div class="service-item" onclick="openServiceModal('Water Damage Repair', 'fas fa-tint', 'Advanced water damage treatment including cleaning, corrosion removal, and component replacement.', '2-4 hours', '60 days', '₹1,999', '₹1,699')">
+                    <div class="service-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Water Damage Repair</h3>
+                    <p>Liquid damage restoration</p>
+                    <div class="price">₹1,999</div>
+                </div>
+                
+                <div class="service-item" onclick="openServiceModal('Charging Port Repair', 'fas fa-plug', 'Charging port repair or replacement including connector cleaning and testing.', '45-60 mins', '90 days', '₹1,499', '₹1,299')">
+                    <div class="service-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Charging Port Repair</h3>
+                    <p>Fix charging issues</p>
+                    <div class="price">₹1,499</div>
+                </div>
+                
+                <div class="service-item" onclick="openServiceModal('Camera Repair', 'fas fa-camera', 'Front or rear camera replacement with calibration and testing for optimal performance.', '30-45 mins', '90 days', '₹2,299', '₹1,999')">
+                    <div class="service-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Camera Repair</h3>
+                    <p>Camera replacement</p>
+                    <div class="price">₹2,299</div>
+                </div>
+                
+                <div class="service-item" onclick="openServiceModal('Software Repair', 'fas fa-code', 'OS reinstalls, virus removal, boot loop fixes, and software troubleshooting.', '1-2 hours', '30 days', '₹1,199', '₹999')">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Software Repair</h3>
+                    <p>OS and software issues</p>
+                    <div class="price">₹1,199</div>
+                </div>
+            </div>
+            
+
+            <h3>Brands We Service</h3>
+            <div class="brands-container">
+                <div class="brand-logo">Apple</div>
+                <div class="brand-logo">Samsung</div>
+                <div class="brand-logo">Google</div>
+                <div class="brand-logo">OnePlus</div>
+                <div class="brand-logo">Xiaomi</div>
+                <div class="brand-logo">Oppo</div>
+                <div class="brand-logo">Vivo</div>
+                <div class="brand-logo">Realme</div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Download Price List
+                </a>
+            </div>
+        </div>
+    </section>
+
+ 
+    <div class="service-modal" id="serviceModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeServiceModal()">&times;</span>
+            <div class="service-detail-header">
+                <div class="service-detail-icon">
+                    <i id="modalIcon" class="fas fa-mobile-alt"></i>
+                </div>
+                <h2 id="modalTitle">Service Title</h2>
+            </div>
+            
+            <p id="modalDescription">Service description will appear here.</p>
+            
+            <div class="service-features">
+                <div class="service-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Professional diagnosis</span>
+                </div>
+                <div class="service-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Quality parts replacement</span>
+                </div>
+                <div class="service-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Thorough testing</span>
+                </div>
+            </div>
+            
+            <div class="service-time">
+                <i class="fas fa-clock"></i>
+                <span id="modalTime">Approx. time: 1 hour</span>
+            </div>
+            
+            <div class="service-warranty">
+                <i class="fas fa-shield-alt"></i>
+                <span id="modalWarranty">Service warranty: 90 days</span>
+            </div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">
+                    <span id="modalPrice">₹1,999</span>
+                    <span id="modalDiscounted" style="color: #e74c3c; text-decoration: line-through; font-size: 1.2rem; margin-left: 10px; display: none;"></span>
+                </div>
+            </div>
+            
+            <div class="service-action">
+                <a href="#contact" class="btn btn-primary" onclick="closeServiceModal()">
+                    <i class="fas fa-calendar-check"></i> Book Now
+                </a>
+            </div>
+        </div>
+    </div>
+  
+    <section id="gallery" class="page">
+        <div class="page-content">
+            <h2>Our Workshop</h2>
+            <p>Take a look at our facility and work</p>
+
+            <div class="decorative-border"></div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBob25lJTIwcmVwYWlyfGVufDB8fDB8fHww" alt="Phone repair workspace"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBob25lJTIwcmVwYWlyfGVufDB8fDB8fHww" alt="Technician repairing phone"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fHBob25lJTIwcmVwYWlyfGVufDB8fDB8fHww" alt="Phone components"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHBob25lJTIwcmVwYWlyfGVufDB8fDB8fHww" alt="Repair tools"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fHBob25lJTIwcmVwYWlyfGVufDB8fDB8fHww" alt="Technician working"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHBob25lJTIwcmVwYWlyfGVufDB8fDB8fHww" alt="Microsoldering equipment"></div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section id="testimonials" class="page">
+        <div class="page-content">
+            <h2>Customer Reviews</h2>
+            <p>What our customers say about our service</p>
+            
+            <div class="decorative-border"></div>
+            
+            <div class="card">
+                <div class="feedback-header">
+                    <div class="feedback-avatar">R</div>
+                    <div>
+                        <div class="feedback-name">Rahul Sharma</div>
+                        <div class="feedback-date">October 15, 2023</div>
+                    </div>
+                </div>
+                <div class="feedback-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Fixed my iPhone screen in under an hour! Perfect quality and much cheaper than the Apple Store. Highly recommended!"</p>
+            </div>
+            
+            <div class="card">
+                <div class="feedback-header">
+                    <div class="feedback-avatar">P</div>
+                    <div>
+                        <div class="feedback-name">Priya Mehta</div>
+                        <div class="feedback-date">September 28, 2023</div>
+                    </div>
+                </div>
+                <div class="feedback-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>"My Samsung phone had water damage. They brought it back to life and saved all my data. Very professional service."</p>
+            </div>
+            
+            <div class="card">
+                <div class="feedback-header">
+                    <div class="feedback-avatar">A</div>
+                    <div>
+                        <div class="feedback-name">Amit Kumar</div>
+                        <div class="feedback-date">August 10, 2023</div>
+                    </div>
+                </div>
+                <div class="feedback-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"I've been coming here for years. They always do a great job and stand behind their work. My go-to place for all phone repairs."</p>
+            </div>
+
+            <button class="review-btn"><a href="https://www.google.com/search?q=techheal+reviews">Write Review</a></button>
+        </div>
+    </section>
+
+   
+    <section id="contact" class="page">
+        <div class="page-content">
+            <h2>Contact Us</h2>
+            <p>We'd love to hear from you</p>
+            
+            <div class="decorative-border"></div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Address</h4>
+                        <p>789, Tech Plaza, Electronics City, Bengaluru - 560100</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+91 00000 00000</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@techheal.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4>Working Hours</h4>
+                        <p>Monday - Saturday: 9:00 AM - 7:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Schedule Repair</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <input type="tel" class="form-control" placeholder="Your Phone Number">
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" placeholder="Date">
+            </div>
+            <div class="form-group">
+                <input type="time" class="form-control" placeholder="Time">
+            </div>
+            <div class="form-group">
+                <select class="form-control">
+                    <option>Select Service</option>
+                    <option>Screen Replacement</option>
+                    <option>Battery Replacement</option>
+                    <option>Water Damage Repair</option>
+                    <option>Charging Port Repair</option>
+                    <option>Camera Repair</option>
+                    <option>Software Repair</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-control">
+                    <option>Device Type</option>
+                    <option>iPhone</option>
+                    <option>Samsung</option>
+                    <option>Google Pixel</option>
+                    <option>OnePlus</option>
+                    <option>Xiaomi</option>
+                    <option>Other Android</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" placeholder="Describe the issue"></textarea>
+            </div>
+            <button class="submit-btn">Schedule Repair</button>
+        </div>
+    </section>
+
+   
+    <section id="location" class="page">
+        <div class="page-content">
+            <h2>Find Us</h2>
+            <p>Visit our repair center</p>
+            
+            <div class="decorative-border"></div>
+            
+            <div class="gallery-item" style="height: 200px; margin-bottom: 20px;">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.268775426168!2d77.63256717508038!3d13.007390987299905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1166cfc141c3%3A0x5fd789e5f2bf433!2sElectronics%20City%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1697462387657!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+            
+            <div class="card">
+                <h3>Directions</h3>
+                <p>We are located in Electronics City, near the tech park. Look for our bright blue sign with the phone logo.</p>
+            </div>
+            
+            <div class="card">
+                <h3>While You Wait</h3>
+                <p>Comfortable waiting area with free WiFi, charging stations, and complimentary coffee while we repair your device.</p>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="https://maps.app.goo.gl/example" class="btn btn-primary">
+                    <i class="fas fa-directions"></i> Get Directions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sharing" class="page">
+        <div class="page-content">
+            <h2>Share This Card</h2>
+            <p>Share our digital visiting card with your friends and family.</p>
+            
+            <div class="share-options">
+                <div class="share-option" onclick="shareVia('whatsapp')">
+                    <div class="share-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <p>WhatsApp</p>
+                </div>
+                
+                <div class="share-option" onclick="shareVia('facebook')">
+                    <div class="share-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <p>Facebook</p>
+                </div>
+                
+                <div class="share-option" onclick="shareVia('twitter')">
+                    <div class="share-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <p>Twitter</p>
+                </div>
+                
+                <div class="share-option" onclick="shareVia('email')">
+                    <div class="share-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <p>Email</p>
+                </div>
+            </div>
+            
+            <h3>Scan QR Code</h3>
+            <div class="qr-scanner">
+                <div class="dummy-image" style="width: 150px; height: 150px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-mobile-alt" style="font-size: 3rem; color: var(--primary);"></i>
+                </div>
+                <p style="margin-top: 10px; text-align: center;">Scan to save our contact</p>
+            </div>
+            
+            <h3>Copy Link</h3>
+            <div class="copy-link">
+                <input type="text" id="profile-link" value="https://techheal.com/digital-card" readonly>
+                <button onclick="copyLink()">Copy</button>
+            </div>
+        </div>
+    </section>
+    
+    <div class="nav-container">
+        <nav>
+            <a href="#main" class="active">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="#about">
+                <i class="fas fa-info-circle"></i>
+            </a>
+            <a href="#services">
+                <i class="fas fa-tools"></i>
+            </a>
+            <a href="#testimonials">
+                <i class="fas fa-star"></i>
+            </a>
+            <a href="#contact">
+                <i class="fas fa-phone"></i>
+            </a>
+            <a href="#location">
+                <i class="fa-solid fa-location-crosshairs"></i>
+            </a>
+            <a href="#sharing">
+                <i class="fa-solid fa-share-from-square"></i>
+            </a>
+        </nav>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('nav a');
+        const scrollDots = document.querySelectorAll('.scroll-dot');
+        
+        function updateActiveStates() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+            
+            scrollDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('href').substring(1) === current) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+        
+        const items = document.querySelectorAll("#galleryGrid .gallery-item");
+        let current = 0;
+
+        function showSet() {
+            items.forEach((item, i) => {
+                item.style.display = (i >= current && i < current + 10) ? "block" : "none";
+            });
+            current = (current + 10) % items.length;
+        }
+
+        showSet();
+        setInterval(showSet, 5000);
+        
+        window.addEventListener('scroll', updateActiveStates);
+        
+        document.querySelectorAll('.submit-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Thank you for your repair request! We will confirm shortly.');
+            });
+        });
+        
+        function shareVia(platform) {
+            alert(`Sharing via ${platform} would be implemented here`);
+        }
+        
+        function copyLink() {
+            const copyText = document.getElementById("profile-link");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            alert("Link copied to clipboard: " + copyText.value);
+        }
+        
+
+        function openServiceModal(title, icon, description, time, warranty, price, discountedPrice) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalIcon').className = icon;
+            document.getElementById('modalDescription').textContent = description;
+            document.getElementById('modalTime').textContent = `Approx. time: ${time}`;
+            document.getElementById('modalWarranty').textContent = `Service warranty: ${warranty}`;
+            document.getElementById('modalPrice').textContent = discountedPrice ? discountedPrice : price;
+            
+            if (discountedPrice) {
+                document.getElementById('modalDiscounted').textContent = price;
+                document.getElementById('modalDiscounted').style.display = 'inline';
+            } else {
+                document.getElementById('modalDiscounted').style.display = 'none';
+            }
+            
+            document.getElementById('serviceModal').style.display = 'flex';
+        }
+        
+        function closeServiceModal() {
+            document.getElementById('serviceModal').style.display = 'none';
+        }
+
+        window.addEventListener('click', function(event) {
+            if (event.target === document.getElementById('serviceModal')) {
+                closeServiceModal();
+            }
+        });
+        
+        window.addEventListener('load', updateActiveStates);
+    </script>
+</body>
+</html>
